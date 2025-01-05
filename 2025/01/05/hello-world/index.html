@@ -14,6 +14,8 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
+<div id="progress-circle" style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; z-index: 9999;"></div>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -30,20 +32,23 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"xiaolong70701.github.io","root":"/test-blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"xiaolong70701.github.io","root":"/test-blog/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="內涵與模型設定預算編列在政治經濟領域專家眼中，其存在許多政治因素。Alesina Passalacqua(2016) 指出在民主國家中具有財政幻覺(fiscal illusion)的現象：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="政府公債的動態觀念">
 <meta property="og:url" content="https://xiaolong70701.github.io/test-blog/2025/01/05/hello-world/index.html">
 <meta property="og:site_name" content="岳氏礦泉水">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="內涵與模型設定預算編列在政治經濟領域專家眼中，其存在許多政治因素。Alesina Passalacqua(2016) 指出在民主國家中具有財政幻覺(fiscal illusion)的現象：">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/bLY3GyS.png">
 <meta property="article:published_time" content="2025-01-05T10:45:32.855Z">
-<meta property="article:modified_time" content="2025-01-05T14:13:32.618Z">
+<meta property="article:modified_time" content="2025-01-05T17:23:42.358Z">
 <meta property="article:author" content="Anthony Sung">
+<meta property="article:tag" content="Political Economy">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/bLY3GyS.png">
 
 <link rel="canonical" href="https://xiaolong70701.github.io/test-blog/2025/01/05/hello-world/">
 
@@ -58,7 +63,7 @@
   };
 </script>
 
-  <title>Hello World | 岳氏礦泉水</title>
+  <title>政府公債的動態觀念 | 岳氏礦泉水</title>
   
 
 
@@ -89,7 +94,7 @@
   </style>
 </noscript>
 
-</head>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -117,6 +122,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -128,7 +134,7 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/test-blog/home/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+    <a href="/test-blog/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -151,20 +157,49 @@
     <a href="/test-blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
   </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/test-blog/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>網站地圖</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main class="main">
@@ -182,7 +217,7 @@
     <link itemprop="mainEntityOfPage" href="https://xiaolong70701.github.io/test-blog/2025/01/05/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/test-blog/images/avatar.gif">
+      <meta itemprop="image" content="/test-blog/images/profile.svg">
       <meta itemprop="name" content="Anthony Sung">
       <meta itemprop="description" content="">
     </span>
@@ -192,7 +227,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          政府公債的動態觀念
         </h1>
 
         <div class="post-meta">
@@ -201,10 +236,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2025-01-05 18:45:32 / 修改時間：22:13:32" itemprop="dateCreated datePublished" datetime="2025-01-05T18:45:32+08:00">2025-01-05</time>
+              <time title="創建時間：2025-01-05 18:45:32" itemprop="dateCreated datePublished" datetime="2025-01-05T18:45:32+08:00">2025-01-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2025-01-06 01:23:42" itemprop="dateModified" datetime="2025-01-06T01:23:42+08:00">2025-01-06</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="文章字數">
@@ -212,14 +253,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>82</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>1 分鐘</span>
+              <span>6 分鐘</span>
             </span>
 
         </div>
@@ -231,13 +272,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <h2 id="內涵與模型設定"><a href="#內涵與模型設定" class="headerlink" title="內涵與模型設定"></a>內涵與模型設定</h2><p>預算編列在政治經濟領域專家眼中，其存在許多政治因素。Alesina Passalacqua(2016) 指出在民主國家中具有<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fiscal_illusion">財政幻覺(fiscal illusion)</a>的現象：</p>
 <span id="more"></span>
 
-<p>這是文章的剩餘部分，只有在點擊「閱讀全文」後才會顯示。</p>
-<h2 id="Math-Test"><a href="#Math-Test" class="headerlink" title="Math Test"></a>Math Test</h2><p>Inline math: $S(P, f, \alpha)$</p>
-<p>Block math:</p>
-<p>$$<br>|S(P, f, \alpha) - \int_{a}^{b} f(x) d\alpha(x)|<br>$$</p>
+<blockquote>
+<p><em>According to this argument voters do not understand the notion of intertemporal budget constraint for the government, therefore when (especially close to elections) voters see spending hikes or tax cuts (the public choice schools was especially concerned with the former) they reward the incumbent, and remain unaware of the consequences of such policies on public debt and the future costs of taxation needed to service it</em>. [name&#x3D;Alesina and<br>Passalacqua]</p>
+</blockquote>
+<p>在經濟學領域中有對於景氣循環此一現象進行解釋的理論，而在政治學領域中亦具有景氣循環的概念，即是選舉。在選舉前候選人多半都會透過提出各種政見，向選民傳遞訊息：唯有投下該候選人一票，人民的生活才會變得更好。假設在此政治經濟體中存在三個行為者：選民(voter)、左翼候選人(left-wing politician)與右翼候選人(right-wing politician)，這三個行為者經歷著兩期的賽局(two-period game)。在每一期開始之前，選民會選出一名政治人物，其將會影響該期的政治。每一期的預算(budget)假定為 $1$。在第一期在任的政治人物可以於 $b \in (0,1)$ 的借貸限制下舉債，並於第二期還本付息。</p>
+<h3 id="政策執行"><a href="#政策執行" class="headerlink" title="政策執行"></a>政策執行</h3><p>每一期的預算可以挹注在左翼($L$)或右翼($R$)的政綱(agenda)上，且在每一期開始之前，可觀察到有一個政綱是具有生產力的。選民亦有其考量，透過 $\lambda$ 評價政策，且 $\lambda \in (\frac{1}{2}, 1)$，給予較有生產力的政策 $\lambda$ 的分數，另一個則為 $1 - \lambda$。政治人物將會關注在 $1 - \lambda$。另一個參數為政策的代價(stake)，以 $\alpha_t$ 衡量，且 $\alpha_t:\mathbb{R} \in (0,1)$，並無法在選前觀測到；且 $\alpha_t$ 對於選民來說是重要的，舉例來說，假設當前的政治經濟體正面臨景氣低迷的狀態，一個良好政策的出現或是借貸度過難關是可以博得選民的選票，故此變量對於選民抑或政治人物而言皆是重要的。從上述的設定可以理解到一個有趣的觀點，儘管政策的代價很重要，但我們無法觀察到，因此我們可以透過經濟學理論中<strong>預期(expected)</strong> 或<strong>期望</strong>的概念衡量選民或政治人物的效用或結果。</p>
+<h3 id="最適公債：不考慮政治人物連任的情況"><a href="#最適公債：不考慮政治人物連任的情況" class="headerlink" title="最適公債：不考慮政治人物連任的情況"></a>最適公債：不考慮政治人物連任的情況</h3><p>如果政策進行借貸，則<br>$$<br>E U_V^1\left(\text {borrow} \mid \alpha_1\right)&#x3D;\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period 1 Welfare} }+\overbrace{\frac{1}{2} \lambda(1-b)}^{\text {Expected Period 2 Welfare }}<br>$$</p>
+<p>其中，由於上述模型設定提到我們無法觀測到第二期的政策代價，則用 $\alpha_t$ 之期望值代替[^1]。若此政策不進行借貸，則<br>$$<br>E U_V^2\left(\text {don’t borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda+\frac{1}{2} \lambda<br>$$</p>
+<p>選民偏好借貸政策的條件為 $EU_V^1 &gt; EU_V^2$，得到<br>$$<br>\alpha_1 &gt; \frac{1}{2}<br>$$<br>直觀來說，當政策十分重要且具有超過平均的政策生產力時，選民才會偏好進行借貸的政策。</p>
+<h3 id="選舉風險下-under-electoral-risk-的最適公債：考慮政治人物連任的情況"><a href="#選舉風險下-under-electoral-risk-的最適公債：考慮政治人物連任的情況" class="headerlink" title="選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況"></a>選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況</h3><p>現在重新假設政治人物預期其政見較他者的更加有效，且有 $p \in (0,1)$ 的機率會在第二期重新進行選舉。注意到政治人物考量借貸時機的邏輯與選民不同，選民關注的是目前政治經濟體的經濟狀況，但政治人物則是關注其是否會連任。若其選擇借貸，其預期效用為<br>$$<br>E U_P^1\left(\text {borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda(1+b)+\frac{1}{2}\left[p \lambda(1-b)+(1-p)(1-\lambda)(1-b)\right]<br>$$</p>
+<p>直觀上理解右側中括號內的式子之方式為：該名政治人物有 $p$ 的機率勝選，則此時必須以 $\lambda(1-b)$ 的數額還本付息；而其則有 $(1- p)$ 的機率敗選，則此時必須以 $(1-\lambda)(1-b)$ 的數額還本付息。若其選擇不借貸，其預期效用則為<br>$$<br>E U_P^2\left(\text {don’t borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda+\frac{1}{2}\left[p \lambda+(1-p)(1-\lambda)\right]<br>$$</p>
+<p>政治人物偏好借貸政策的條件為，$EU_P^1 &gt; EU_P^2$，整理可得：<br>$$<br>\alpha_1 &gt;\frac{p \lambda+(1-p)(1-\lambda)}{2 \lambda}<br>$$</p>
+<p>上述結果小於 $\frac{1}{2}$。在下圖中可以看到，在 $1&#x2F;2$ 至 $1$ 之間是不考慮選舉情況下政治人物的最適選擇區域；然而在考慮選舉的情況下，政治人物最是選擇的點將會移動到 $1&#x2F;2$ 左側，代表儘管該政策對於選民不是那麼的重要，政治人物人會不負責任地選擇舉債，直觀上不僅是為了其自身的連任，更隱含著該政治人物認為這些債務若在其連任後可以透過增加稅收來補償，若敗選則將債留繼任政府，對其並無損失。</p>
+<p><img src="https://i.imgur.com/bLY3GyS.png"></p>
+<p>最終得到的結論是政治人物會在此政策上較上一小節的假設下借貸更多。</p>
+<h3 id="折現因子-discount-factor-的考量"><a href="#折現因子-discount-factor-的考量" class="headerlink" title="折現因子(discount factor)的考量"></a>折現因子(discount factor)的考量</h3><p>假設我們現在移除了連任壓力，並考慮折現因子 $\delta \in (0,1)$，若進行借貸，</p>
+<p>$$<br>E U_V^1\left(\text {borrow} \mid \alpha_1\right)&#x3D;\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period } 1 \text { Welfare }}+\overbrace{\delta \frac{1}{2} \lambda(1-b)}^{\text {Expected Period } 2 \text { Welfare }}<br>$$<br>若不進行借貸，</p>
+<p>$$<br>E U_V^2\left(\text {don’t borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda+\delta \frac{1}{2} \lambda<br>$$<br>選民偏好借貸政策的條件為 $EU_V^1 &gt; EU_V^2$，得到<br>$$<br>\alpha_1 &gt; \frac{\delta}{2}<br>$$</p>
+<p>若有世代落差，亦會出現政治人物過分舉債的現象，即所謂的債留子孫。</p>
+<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>在民主選舉下，必定存在連任壓力於各個政治人物之間，一個理性的政治人物必定會把握當下，因此會更輕易傾向借債；若政治人物已經預期在下一任不會當選，則其會選擇大幅增加支出。值得一提的是，若 $p \to 1$，也就是越能夠確保政治人物當選的可能性，則大幅舉債的結果將會逼近在不考慮連任下的最適選擇，不過這是天方夜譚（在民主國家中不可能發生）。</p>
+<p>[^1]:因 $\alpha_t$ 介於 $0$ 至 $1$ 之間，為一個連續均勻分配(continuous uniform distribution)，即 $\alpha_t \sim \text{U}[0,1]$，故其期望值為 $\mathbb{E}(\alpha_t) &#x3D; \frac{1 - 0}{2} &#x3D; \frac{1}{2}$。</p>
 
     </div>
 
@@ -246,6 +303,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/test-blog/tags/Political-Economy/" rel="tag"># Political Economy</a>
+          </div>
 
         
 
@@ -308,12 +368,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Math-Test"><span class="nav-number">1.</span> <span class="nav-text">Math Test</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A7%E6%B6%B5%E8%88%87%E6%A8%A1%E5%9E%8B%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.</span> <span class="nav-text">內涵與模型設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%BF%E7%AD%96%E5%9F%B7%E8%A1%8C"><span class="nav-number">1.1.</span> <span class="nav-text">政策執行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E9%81%A9%E5%85%AC%E5%82%B5%EF%BC%9A%E4%B8%8D%E8%80%83%E6%85%AE%E6%94%BF%E6%B2%BB%E4%BA%BA%E7%89%A9%E9%80%A3%E4%BB%BB%E7%9A%84%E6%83%85%E6%B3%81"><span class="nav-number">1.2.</span> <span class="nav-text">最適公債：不考慮政治人物連任的情況</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%B8%E8%88%89%E9%A2%A8%E9%9A%AA%E4%B8%8B-under-electoral-risk-%E7%9A%84%E6%9C%80%E9%81%A9%E5%85%AC%E5%82%B5%EF%BC%9A%E8%80%83%E6%85%AE%E6%94%BF%E6%B2%BB%E4%BA%BA%E7%89%A9%E9%80%A3%E4%BB%BB%E7%9A%84%E6%83%85%E6%B3%81"><span class="nav-number">1.3.</span> <span class="nav-text">選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%98%E7%8F%BE%E5%9B%A0%E5%AD%90-discount-factor-%E7%9A%84%E8%80%83%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">折現因子(discount factor)的考量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%B5%90"><span class="nav-number">1.5.</span> <span class="nav-text">小結</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anthony Sung"
+      src="/test-blog/images/profile.svg">
   <p class="site-author-name" itemprop="name">Anthony Sung</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -325,6 +387,12 @@
           <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">文章</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/test-blog/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
 </div>
@@ -346,6 +414,10 @@
 
 
       </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
 
     </div>
   </aside>
@@ -373,12 +445,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">0k</span>
+    <span title="總字數">2k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1 分鐘</span>
+    <span title="所需總閱讀時間">6 分鐘</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
   </div>
@@ -419,6 +491,10 @@
 
 
 
+  
+<script src="/test-blog/js/local-search.js"></script>
+
+
 
 
 
@@ -433,6 +509,26 @@
   
 
   
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '64px',
+  right: 'unset',
+  left: '32px',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌙',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
 
 </body>
 </html>
