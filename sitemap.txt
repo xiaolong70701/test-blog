@@ -1,7 +1,7 @@
-https://xiaolong70701.github.io/test-blog/2025/01/05/hello-world/
-https://xiaolong70701.github.io/test-blog/about/index.html
-https://xiaolong70701.github.io/test-blog/categories/index.html
-https://xiaolong70701.github.io/test-blog/tags/index.html
-https://xiaolong70701.github.io/test-blog/index/index.html
-https://xiaolong70701.github.io/test-blog
-https://xiaolong70701.github.io/test-blog/tags/Political-Economy/
+https://xiaolong70701.github.io/yueswater/2025/01/05/20250106-LDA/20250106-LDA/
+https://xiaolong70701.github.io/yueswater/about/index.html
+https://xiaolong70701.github.io/yueswater/categories/index.html
+https://xiaolong70701.github.io/yueswater/tags/index.html
+https://xiaolong70701.github.io/yueswater/index/index.html
+https://xiaolong70701.github.io/yueswater
+https://xiaolong70701.github.io/yueswater/tags/NLP/

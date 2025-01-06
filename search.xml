@@ -1,34 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>政府公債的動態觀念</title>
-    <url>/test-blog/2025/01/05/hello-world/</url>
-    <content><![CDATA[<h2 id="內涵與模型設定"><a href="#內涵與模型設定" class="headerlink" title="內涵與模型設定"></a>內涵與模型設定</h2><p>預算編列在政治經濟領域專家眼中，其存在許多政治因素。Alesina Passalacqua(2016) 指出在民主國家中具有<a href="https://en.wikipedia.org/wiki/Fiscal_illusion">財政幻覺(fiscal illusion)</a>的現象：</p>
+    <title>LDA 模型</title>
+    <url>/yueswater/2025/01/05/20250106-LDA/20250106-LDA/</url>
+    <content><![CDATA[<p>LDA(Latent Dirichlet Allocation) 是一種常用的主題模型分析方法。其核心思想是：<strong>一篇文章可以包含多個主題，每個主題都有相關的詞彙</strong>。LDA 模型能根據文章的詞語分配，自動學習出文章包含的主題以及每個主題所對應的詞語，從而快速瞭解文章的主題結構，而不需要仰賴繁瑣且耗時的人工標註。</p>
 <span id="more"></span>
 
-<blockquote>
-<p><em>According to this argument voters do not understand the notion of intertemporal budget constraint for the government, therefore when (especially close to elections) voters see spending hikes or tax cuts (the public choice schools was especially concerned with the former) they reward the incumbent, and remain unaware of the consequences of such policies on public debt and the future costs of taxation needed to service it</em>. [name&#x3D;Alesina and<br>Passalacqua]</p>
-</blockquote>
-<p>在經濟學領域中有對於景氣循環此一現象進行解釋的理論，而在政治學領域中亦具有景氣循環的概念，即是選舉。在選舉前候選人多半都會透過提出各種政見，向選民傳遞訊息：唯有投下該候選人一票，人民的生活才會變得更好。假設在此政治經濟體中存在三個行為者：選民(voter)、左翼候選人(left-wing politician)與右翼候選人(right-wing politician)，這三個行為者經歷著兩期的賽局(two-period game)。在每一期開始之前，選民會選出一名政治人物，其將會影響該期的政治。每一期的預算(budget)假定為 $1$。在第一期在任的政治人物可以於 $b \in (0,1)$ 的借貸限制下舉債，並於第二期還本付息。</p>
-<h3 id="政策執行"><a href="#政策執行" class="headerlink" title="政策執行"></a>政策執行</h3><p>每一期的預算可以挹注在左翼($L$)或右翼($R$)的政綱(agenda)上，且在每一期開始之前，可觀察到有一個政綱是具有生產力的。選民亦有其考量，透過 $\lambda$ 評價政策，且 $\lambda \in (\frac{1}{2}, 1)$，給予較有生產力的政策 $\lambda$ 的分數，另一個則為 $1 - \lambda$。政治人物將會關注在 $1 - \lambda$。另一個參數為政策的代價(stake)，以 $\alpha_t$ 衡量，且 $\alpha_t:\mathbb{R} \in (0,1)$，並無法在選前觀測到；且 $\alpha_t$ 對於選民來說是重要的，舉例來說，假設當前的政治經濟體正面臨景氣低迷的狀態，一個良好政策的出現或是借貸度過難關是可以博得選民的選票，故此變量對於選民抑或政治人物而言皆是重要的。從上述的設定可以理解到一個有趣的觀點，儘管政策的代價很重要，但我們無法觀察到，因此我們可以透過經濟學理論中<strong>預期(expected)</strong> 或<strong>期望</strong>的概念衡量選民或政治人物的效用或結果。</p>
-<h3 id="最適公債：不考慮政治人物連任的情況"><a href="#最適公債：不考慮政治人物連任的情況" class="headerlink" title="最適公債：不考慮政治人物連任的情況"></a>最適公債：不考慮政治人物連任的情況</h3><p>如果政策進行借貸，則<br>$$<br>E U_V^1\left(\text {borrow} \mid \alpha_1\right)&#x3D;\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period 1 Welfare} }+\overbrace{\frac{1}{2} \lambda(1-b)}^{\text {Expected Period 2 Welfare }}<br>$$</p>
-<p>其中，由於上述模型設定提到我們無法觀測到第二期的政策代價，則用 $\alpha_t$ 之期望值代替[^1]。若此政策不進行借貸，則<br>$$<br>E U_V^2\left(\text {don’t borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda+\frac{1}{2} \lambda<br>$$</p>
-<p>選民偏好借貸政策的條件為 $EU_V^1 &gt; EU_V^2$，得到<br>$$<br>\alpha_1 &gt; \frac{1}{2}<br>$$<br>直觀來說，當政策十分重要且具有超過平均的政策生產力時，選民才會偏好進行借貸的政策。</p>
-<h3 id="選舉風險下-under-electoral-risk-的最適公債：考慮政治人物連任的情況"><a href="#選舉風險下-under-electoral-risk-的最適公債：考慮政治人物連任的情況" class="headerlink" title="選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況"></a>選舉風險下(under electoral risk)的最適公債：考慮政治人物連任的情況</h3><p>現在重新假設政治人物預期其政見較他者的更加有效，且有 $p \in (0,1)$ 的機率會在第二期重新進行選舉。注意到政治人物考量借貸時機的邏輯與選民不同，選民關注的是目前政治經濟體的經濟狀況，但政治人物則是關注其是否會連任。若其選擇借貸，其預期效用為<br>$$<br>E U_P^1\left(\text {borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda(1+b)+\frac{1}{2}\left[p \lambda(1-b)+(1-p)(1-\lambda)(1-b)\right]<br>$$</p>
-<p>直觀上理解右側中括號內的式子之方式為：該名政治人物有 $p$ 的機率勝選，則此時必須以 $\lambda(1-b)$ 的數額還本付息；而其則有 $(1- p)$ 的機率敗選，則此時必須以 $(1-\lambda)(1-b)$ 的數額還本付息。若其選擇不借貸，其預期效用則為<br>$$<br>E U_P^2\left(\text {don’t borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda+\frac{1}{2}\left[p \lambda+(1-p)(1-\lambda)\right]<br>$$</p>
-<p>政治人物偏好借貸政策的條件為，$EU_P^1 &gt; EU_P^2$，整理可得：<br>$$<br>\alpha_1 &gt;\frac{p \lambda+(1-p)(1-\lambda)}{2 \lambda}<br>$$</p>
-<p>上述結果小於 $\frac{1}{2}$。在下圖中可以看到，在 $1&#x2F;2$ 至 $1$ 之間是不考慮選舉情況下政治人物的最適選擇區域；然而在考慮選舉的情況下，政治人物最是選擇的點將會移動到 $1&#x2F;2$ 左側，代表儘管該政策對於選民不是那麼的重要，政治人物人會不負責任地選擇舉債，直觀上不僅是為了其自身的連任，更隱含著該政治人物認為這些債務若在其連任後可以透過增加稅收來補償，若敗選則將債留繼任政府，對其並無損失。</p>
-<p><img src="https://i.imgur.com/bLY3GyS.png"></p>
-<p>最終得到的結論是政治人物會在此政策上較上一小節的假設下借貸更多。</p>
-<h3 id="折現因子-discount-factor-的考量"><a href="#折現因子-discount-factor-的考量" class="headerlink" title="折現因子(discount factor)的考量"></a>折現因子(discount factor)的考量</h3><p>假設我們現在移除了連任壓力，並考慮折現因子 $\delta \in (0,1)$，若進行借貸，</p>
-<p>$$<br>E U_V^1\left(\text {borrow} \mid \alpha_1\right)&#x3D;\overbrace{\alpha_1 \lambda(1+b)}^{\text {Period } 1 \text { Welfare }}+\overbrace{\delta \frac{1}{2} \lambda(1-b)}^{\text {Expected Period } 2 \text { Welfare }}<br>$$<br>若不進行借貸，</p>
-<p>$$<br>E U_V^2\left(\text {don’t borrow} \mid \alpha_1\right)&#x3D;\alpha_1 \lambda+\delta \frac{1}{2} \lambda<br>$$<br>選民偏好借貸政策的條件為 $EU_V^1 &gt; EU_V^2$，得到<br>$$<br>\alpha_1 &gt; \frac{\delta}{2}<br>$$</p>
-<p>若有世代落差，亦會出現政治人物過分舉債的現象，即所謂的債留子孫。</p>
-<h3 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h3><p>在民主選舉下，必定存在連任壓力於各個政治人物之間，一個理性的政治人物必定會把握當下，因此會更輕易傾向借債；若政治人物已經預期在下一任不會當選，則其會選擇大幅增加支出。值得一提的是，若 $p \to 1$，也就是越能夠確保政治人物當選的可能性，則大幅舉債的結果將會逼近在不考慮連任下的最適選擇，不過這是天方夜譚（在民主國家中不可能發生）。</p>
-<p>[^1]:因 $\alpha_t$ 介於 $0$ 至 $1$ 之間，為一個連續均勻分配(continuous uniform distribution)，即 $\alpha_t \sim \text{U}[0,1]$，故其期望值為 $\mathbb{E}(\alpha_t) &#x3D; \frac{1 - 0}{2} &#x3D; \frac{1}{2}$。</p>
+<h2 id="模型假設與生成過程"><a href="#模型假設與生成過程" class="headerlink" title="模型假設與生成過程"></a>模型假設與生成過程</h2><p>LDA 模型假設文件是由主題生成的，每個主題又由詞生成。模型假設以及具體生成過程如下：</p>
+<ol>
+<li><strong>文件集合</strong>：LDA 假設每個文件都是由多個主題的組合形成的，每個主題又由不同的詞組成。文件中每個詞都是從一個特定主題中生成的。</li>
+<li><strong>主題分配</strong>：每個文件都有一個主題分配，通常表示為一個機率分配，即每個主題在該文件中的比例。這些分配由 Dirichlet 分配生成，因此主題分配在不同的文件之間可以有所不同。</li>
+<li><strong>詞的分配</strong>：每個主題也有一個詞的分配，這是該主題中各個詞出現的機率。這些分配同樣由 Dirichlet 分配生成，使得不同主題的詞分配具有獨特性。</li>
+<li><strong>生成過程</strong>：LDA 的生成過程可以描述如下：<ul>
+<li>對於每個文件，隨機從 Dirichlet 分配中選擇一個主題分配。</li>
+<li>對於文件中的每個詞，首先選擇一個主題（根據文件的主題分配），然後從該主題的詞分配中選擇一個詞。</li>
+</ul>
+</li>
+<li><strong>模型參數</strong>：<ul>
+<li>$\alpha$：控制文件主題分配的平滑程度。如果 $\alpha$ 值小，文件中只包含少數幾個主題的可能性較大。</li>
+<li>$\beta$：控制主題的詞分配的平滑程度。如果 $\beta$ 值小，主題中會偏向少數幾個詞。</li>
+</ul>
+</li>
+<li><strong>推論過程</strong>：在應用 LDA 時，通常使用貝葉斯估計或近似估計方法（如 Gibbs 採樣）來估計每個文件的主題分配以及每個主題的詞分配，從而由文本集合中提取出不同的主題。</li>
+</ol>
+<p>LDA 的模型可以用一個<strong>機率生成模型</strong>的形式來理解。LDA 模型假設文件是由主題生成的，每個主題又由詞生成。具體生成過程如下：給定文件集 $D$ 共有 $M$ 篇文件，每篇文件的詞數為 $N_{d}$，並事先決定主題數 $K$。對於每篇文件 $d \in {1, \dots, M}$：</p>
+<ul>
+<li>為每篇文件從 Dirichlet 分配生成主題分配 $\theta_d \sim \text{Dirichlet}(\alpha)$，其中 $\theta_d$ 表示文件 $d$ 中主題的機率分配。</li>
+<li>對每個主題 $k \in {1, \dots, K}$，從 Dirichlet 分配生成詞分配 $\phi_k \sim \text{Dirichlet}(\beta)$，其中 $\phi_k$ 表示主題 $k$ 中詞的機率分配。</li>
+<li>對於每篇文件中的每個詞位置 $n \in {1, \dots, N_d}$：<ul>
+<li>從主題分配 $\theta_d$  中選擇一個主題 $z_{d,n} \sim \text{Multinomial}(\theta_d)$。</li>
+<li>從選擇的主題 $z_{d,n}$ 對應的詞分配 $\phi_{z_{d,n}}$ 中選擇一個詞 $w_{d,n} \sim \text{Multinomial}(\phi_{z_{d,n}})$。</li>
+</ul>
+</li>
+</ul>
+<h2 id="LDA-的概似函數"><a href="#LDA-的概似函數" class="headerlink" title="LDA 的概似函數"></a>LDA 的概似函數</h2><p>綜上，LDA 模型的概似函數表示文件集的生成機率，即文件集的聯合分配</p>
+<p>$$<br>P(D | \alpha, \beta) &#x3D; \prod_{d&#x3D;1}^{M} \int_{\theta_d} P(\theta_d | \alpha) \left( \prod_{n&#x3D;1}^{N_d} \sum_{z_{d,n}} P(z_{d,n} | \theta_d) P(w_{d,n} | z_{d,n}, \beta) \right) d\theta_d<br>$$</p>
+<p>其中</p>
+<ul>
+<li>$P(\theta_d | \alpha)$：文件 $d$ 中的主題分配由參數 $\alpha$ 控制。</li>
+<li>$P(z_{d,n} | \theta_d)$：對每個詞位置 $n$，根據主題分配 $\theta_d$ 選擇一個主題 $z_{d,n}$。</li>
+<li>$P(w_{d,n} | z_{d,n}, \beta)$：從主題 $z_{d,n}$ 的詞分配中選擇詞 $w_{d,n}$，由參數 $\beta$ 控制。</li>
+</ul>
+<p>實務上通常使用近似推斷方法，如<strong>變分推理</strong>或 <strong>Gibbs 採樣 (Gibbs sampling)</strong>，來估計模型的參數（主題分配 $\theta$ 和詞分配 $\phi$，從而計算出文件和詞的隱含主題。</p>
+<h1 id="STM-模型"><a href="#STM-模型" class="headerlink" title="STM 模型"></a>STM 模型</h1><p>不同於 LDA 模型，STM (Strucutral Topic Model) 是一種進階的主題模型分析方法。它在 LDA 的基礎上，<strong>加入了一些文章的元數據 (metadata)，如作者、時間、位置等</strong>，從而更好地學習主題，挖掘主題與元數據之間的關係。<strong>例如，STM 可以學習出不同作者傾向於討論的主題，或者某個時間段內的熱門話題</strong>。與 LDA 相比，STM 更加靈活和強大，適用於更複雜的文本分析場景。</p>
+<p>STM（Structural Topic Model）是一種主題模型，結構上類似於 LDA，但它進一步考慮了文件中的元數據（如時間、作者、來源等）對主題分配的影響。STM 的數學模型擴展了 LDA，將文件的元數據作為額外的解釋變量，用來影響文件的主題分配或主題的詞分配。</p>
+<h3 id="模型假設與生成過程-1"><a href="#模型假設與生成過程-1" class="headerlink" title="模型假設與生成過程"></a>模型假設與生成過程</h3><p>STM 的生成過程可以分為以下幾步：同樣給定文件集 $D$ 共有 $M$ 篇文件，每篇文件的詞數為 $N_{d}$，並事先設定主題數 $K$。不過需要注意到，在 STM 模型中，模型參數的意涵稍微有變化：</p>
+<ul>
+<li>$\alpha$：是文件-主題分配的超參數，並且在 STM 中，$\alpha$ 可以根據文件元數據進行調整。</li>
+<li>$\beta$：是主題-詞分配的超參數，用於控制詞在每個主題中的分配。在 STM 中， $\beta$ 也可以根據文件元數據進行調整。</li>
+</ul>
+<p>此外，由於 STM 模型考慮了元數據與主題分配的關係，因此STM 通過<strong>回歸模型</strong>將元數據與主題分配或詞分配相關聯：在 STM 中，文件的主題分佈 $\theta_d$ 不僅僅來自 Dirichlet 分配，而是通過元數據的影響來生成。簡單來說，$\theta_d$ 是一個向量，取決於元數據 $X_{d}$（例如時間、地區、來源等），可以表示為：</p>
+<p>$$<br>\theta_{d} \sim \operatorname{LogisticNormal}(g(X_{d}, \alpha))<br>$$</p>
+<p>其中 $g(X_{d}, \alpha)$ 是元數據對主題分佈的回歸函數，通常使用 Logistic 標準化來確保主題分佈的和為 $1$。而詞的分佈 $\phi_{k}$ 則可以根據元數據進行調整，即詞在每個主題中的分佈也會受到元數據的影響。這樣可以使得主題中使用的詞語在不同條件下有所變化。因此，綜合以上假設，對於每篇文件 $d \in {1, \dots, M}$ 而言：</p>
+<ul>
+<li>根據元數據 $X_d$ 使用回歸模型生成文件的主題分配 $\theta_d \sim \text{LogisticNormal}(g(X_d, \alpha))$。</li>
+<li>對於每個主題 $k \in {1, \dots, K}$，生成一個詞分配 $\phi_k \sim \text{Dirichlet}(\beta(X_d))$，其中 $\beta(X_d)$ 由元數據調整，以便讓詞的分配隨文件屬性有所變化。</li>
+<li>對於文件中的每個詞位置 $n \in {1, \dots, N_d}$：<ul>
+<li>根據主題分配 $\theta_d$ 選擇一個主題 $z_{d,n} \sim \text{Multinomial}(\theta_d)$。</li>
+<li>從選定的主題 $z_{d,n}$ 對應的詞分配 $\phi_{z_{d,n}}$ 中選擇一個詞 $w_{d,n} \sim \text{Multinomial}(\phi_{z_{d,n}})$。</li>
+</ul>
+</li>
+</ul>
+<h3 id="STM-的概似函數"><a href="#STM-的概似函數" class="headerlink" title="STM 的概似函數"></a>STM 的概似函數</h3><p>STM 的似然函數與 LDA 類似，但由於其主題分配和詞分配受到元數據的調整影響，反倒增加了文件生成過程的靈活程度。STM 的似然函數表示為：</p>
+<p>$$<br>P(D | \color{red}{X}, \alpha, \beta) &#x3D; \prod_{d&#x3D;1}^{M} \int_{\theta_d} P(\theta_d | \color{red}{X_d}, \alpha) \left( \prod_{n&#x3D;1}^{N_d} \sum_{z_{d,n}} P(z_{d,n} | \theta_d) P(w_{d,n} | z_{d,n}, \color{red}{X_d}, \beta) \right) d\theta_d<br>$$</p>
+<p>其中</p>
+<ul>
+<li>$P(\theta_d | X_d, \alpha)$：考慮文件元數據 $X_d$ 的主題分配。</li>
+<li>$P(z_{d,n} | \theta_d)$：對於文件中的每個詞位置 $n$，根據主題分配選擇一個主題。</li>
+<li>$P(w_{d,n} | z_{d,n}, X_d, \beta)$：根據主題的詞分配（考慮了元數據影響）選擇詞 $w_{d,n}$。</li>
+</ul>
+<p>在 STM 中，推論同樣需要用到<strong>變分推理</strong>或 <strong>Gibbs 採樣</strong>，但還需進一步估計元數據對主題分配和詞分配的影響參數。</p>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>LDA 模型</th>
+<th>STM 模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型基本思想</td>
+<td>根據文章的詞語分配，自動學習出文章包含的主題</td>
+<td>在 LDA 的基礎上，加入文章的元數據，如作者、時間、位置等</td>
+</tr>
+<tr>
+<td>主要優勢</td>
+<td>簡單易懂，在多個領域有廣泛應用</td>
+<td>更加靈活和強大，能挖掘主題與元數據之間的關係</td>
+</tr>
+<tr>
+<td>適用場景</td>
+<td>基本的文本主題分析</td>
+<td>複雜的文本分析，如作者分析、時間趨勢分析等</td>
+</tr>
+</tbody></table>
+<h1 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h1><p>首先，目前的問題是資料量太少，且用語言模型分析社會期望的跨國比較有點「大材小用」，因此應該換一條路走。</p>
+<h2 id="使用主題模型尋找主題"><a href="#使用主題模型尋找主題" class="headerlink" title="使用主題模型尋找主題"></a>使用主題模型尋找主題</h2><p>根據目前既有資料，可以使用主題模型，將文本的潛在主題萃取出。</p>
+<ul>
+<li>一篇文本包含至少一個主題，可以使用統計方法將資料進行篩選</li>
+<li>文本主題篩選可以考慮出現比率（ratio），若高於特定數值（例如 $0.1$）則納入</li>
+<li>如果遇到停用詞或需要移除的詞彙，可以使用既有數據進行篩除，但較建議使用遮罩（mask）的方式，例如當模型看到<code>[word]</code>，會跳過該詞彙，但不會將其刪除，從而保留字詞之間的上下文意</li>
+</ul>
+<p>王釧茹老師建議使用程式讓它<strong>考試</strong>，以<code>文本特徵_合併.xlsx</code>這份檔案中人工標記的<code>v4</code>與<code>v4a</code>作為標準答案，每次考試都有不同的答案，從而可以判斷選擇主題個數為何。</p>
+<h2 id="大語言模型作為輔助工具"><a href="#大語言模型作為輔助工具" class="headerlink" title="大語言模型作為輔助工具"></a>大語言模型作為輔助工具</h2><p>可以使用大語言模型作為<strong>語意分析</strong>與<strong>資料抽取</strong>的工具，當然可以運用不同的模型，在相同的提問詞（prompt）的前提下，比較不同的結果。此外，若要增加專家效度於模型中，則可考慮使用大語言模型，利用「請你作為專家…」之詞彙作為提問詞。</p>
+<pre class="mermaid">graph TD
+  A[資料預處理] --> B[LDA 模型分析主題]
+  A --> C[STM 模型結合元數據]
+  B --> D[LDA 主題分布結果]
+  C --> E[STM 主題結構與元數據影響]
+  D --> F[主題空間投影]
+  E --> F
+  F --> G[群聚現象分析]
+  G --> H[降維可視化]
+  H --> I[結果解釋與驗證]
+  G --> J[大語言模型輔助]
+  J --> I
+  I --> K[模型調整與最適化]</pre>
 ]]></content>
       <tags>
-        <tag>Political Economy</tag>
+        <tag>NLP</tag>
       </tags>
   </entry>
 </search>

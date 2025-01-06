@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xiaolong70701.github.io/test-blog/2025/01/05/hello-world/</loc>
+    <loc>https://xiaolong70701.github.io/yueswater/2025/01/05/20250106-LDA/20250106-LDA/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiaolong70701.github.io/yueswater/about/index.html</loc>
     
     <lastmod>2025-01-05</lastmod>
     
@@ -11,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://xiaolong70701.github.io/test-blog/about/index.html</loc>
+    <loc>https://xiaolong70701.github.io/yueswater/categories/index.html</loc>
     
     <lastmod>2025-01-05</lastmod>
     
@@ -20,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://xiaolong70701.github.io/test-blog/categories/index.html</loc>
+    <loc>https://xiaolong70701.github.io/yueswater/tags/index.html</loc>
     
     <lastmod>2025-01-05</lastmod>
     
@@ -29,16 +38,7 @@
   </url>
   
   <url>
-    <loc>https://xiaolong70701.github.io/test-blog/tags/index.html</loc>
-    
-    <lastmod>2025-01-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://xiaolong70701.github.io/test-blog/index/index.html</loc>
+    <loc>https://xiaolong70701.github.io/yueswater/index/index.html</loc>
     
     <lastmod>2025-01-05</lastmod>
     
@@ -48,7 +48,7 @@
   
 
   <url>
-    <loc>https://xiaolong70701.github.io/test-blog</loc>
+    <loc>https://xiaolong70701.github.io/yueswater</loc>
     <lastmod>2025-01-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -56,7 +56,7 @@
 
   
   <url>
-    <loc>https://xiaolong70701.github.io/test-blog/tags/Political-Economy/</loc>
+    <loc>https://xiaolong70701.github.io/yueswater/tags/NLP/</loc>
     <lastmod>2025-01-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
