@@ -41,7 +41,7 @@
 <meta property="og:description" content="LDA(Latent Dirichlet Allocation) 是一種常用的主題模型分析方法。其核心思想是：一篇文章可以包含多個主題，每個主題都有相關的詞彙。LDA 模型能根據文章的詞語分配，自動學習出文章包含的主題以及每個主題所對應的詞語，從而快速瞭解文章的主題結構，而不需要仰賴繁瑣且耗時的人工標註。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2025-01-07T15:48:22.317Z">
-<meta property="article:modified_time" content="2025-01-07T17:37:52.357Z">
+<meta property="article:modified_time" content="2025-01-07T17:41:19.681Z">
 <meta property="article:author" content="Anthony Sung">
 <meta property="article:tag" content="自然語言處理">
 <meta property="article:tag" content="機器學習">
@@ -213,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2025-01-08 01:37:52" itemprop="dateModified" datetime="2025-01-08T01:37:52+08:00">2025-01-08</time>
+                <time title="修改時間：2025-01-08 01:41:19" itemprop="dateModified" datetime="2025-01-08T01:41:19+08:00">2025-01-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +238,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>22 分鐘</span>
+              <span>21 分鐘</span>
             </span>
 
         </div>
@@ -289,7 +289,7 @@
 <li>$P(w_{d,n} | z_{d,n}, \beta)$：從主題 $z_{d,n}$ 的詞分配中選擇詞 $w_{d,n}$，由參數 $\beta$ 控制。</li>
 </ul>
 <p>實務上通常使用近似推斷方法，如<strong>變分推理</strong>或 <strong>Gibbs 採樣 (Gibbs sampling)</strong>，來估計模型的參數（主題分配 $\theta$ 和詞分配 $\phi$，從而計算出文件和詞的隱含主題。</p>
-<h1 id="STM-模型"><a href="#STM-模型" class="headerlink" title="STM 模型"></a>STM 模型</h1><p>不同於 LDA 模型，STM (Strucutral Topic Model) 是一種進階的主題模型分析方法。它在 LDA 的基礎上，<strong>加入了一些文章的元數據 (metadata)，如作者、時間、位置等</strong>，從而更好地學習主題，挖掘主題與元數據之間的關係。<strong>例如，STM 可以學習出不同作者傾向於討論的主題，或者某個時間段內的熱門話題</strong>。與 LDA 相比，STM 更加靈活和強大，適用於更複雜的文本分析場景。</p>
+<h2 id="STM-模型"><a href="#STM-模型" class="headerlink" title="STM 模型"></a>STM 模型</h2><p>不同於 LDA 模型，STM (Strucutral Topic Model) 是一種進階的主題模型分析方法。它在 LDA 的基礎上，<strong>加入了一些文章的元數據 (metadata)，如作者、時間、位置等</strong>，從而更好地學習主題，挖掘主題與元數據之間的關係。<strong>例如，STM 可以學習出不同作者傾向於討論的主題，或者某個時間段內的熱門話題</strong>。與 LDA 相比，STM 更加靈活和強大，適用於更複雜的文本分析場景。</p>
 <p>STM（Structural Topic Model）是一種主題模型，結構上類似於 LDA，但它進一步考慮了文件中的元數據（如時間、作者、來源等）對主題分配的影響。STM 的數學模型擴展了 LDA，將文件的元數據作為額外的解釋變量，用來影響文件的主題分配或主題的詞分配。</p>
 <h3 id="模型假設與生成過程-1"><a href="#模型假設與生成過程-1" class="headerlink" title="模型假設與生成過程"></a>模型假設與生成過程</h3><p>STM 的生成過程可以分為以下幾步：同樣給定文件集 $D$ 共有 $M$ 篇文件，每篇文件的詞數為 $N_{d}$，並事先設定主題數 $K$。不過需要注意到，在 STM 模型中，模型參數的意涵稍微有變化：</p>
 <ul>
@@ -341,16 +341,30 @@
 <td>複雜的文本分析，如作者分析、時間趨勢分析等</td>
 </tr>
 </tbody></table>
-<h1 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h1><p>首先，目前的問題是資料量太少，且用語言模型分析社會期望的跨國比較有點「大材小用」，因此應該換一條路走。</p>
-<h2 id="使用主題模型尋找主題"><a href="#使用主題模型尋找主題" class="headerlink" title="使用主題模型尋找主題"></a>使用主題模型尋找主題</h2><p>根據目前既有資料，可以使用主題模型，將文本的潛在主題萃取出。</p>
+<h2 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h2><p>首先，目前的問題是資料量太少，且用語言模型分析社會期望的跨國比較有點「大材小用」，因此應該換一條路走。</p>
+<h3 id="使用主題模型尋找主題"><a href="#使用主題模型尋找主題" class="headerlink" title="使用主題模型尋找主題"></a>使用主題模型尋找主題</h3><p>根據目前既有資料，可以使用主題模型，將文本的潛在主題萃取出。</p>
 <ul>
 <li>一篇文本包含至少一個主題，可以使用統計方法將資料進行篩選</li>
 <li>文本主題篩選可以考慮出現比率（ratio），若高於特定數值（例如 $0.1$）則納入</li>
 <li>如果遇到停用詞或需要移除的詞彙，可以使用既有數據進行篩除，但較建議使用遮罩（mask）的方式，例如當模型看到<code>[word]</code>，會跳過該詞彙，但不會將其刪除，從而保留字詞之間的上下文意</li>
 </ul>
 <p>王釧茹老師建議使用程式讓它<strong>考試</strong>，以<code>文本特徵_合併.xlsx</code>這份檔案中人工標記的<code>v4</code>與<code>v4a</code>作為標準答案，每次考試都有不同的答案，從而可以判斷選擇主題個數為何。</p>
-<h2 id="大語言模型作為輔助工具"><a href="#大語言模型作為輔助工具" class="headerlink" title="大語言模型作為輔助工具"></a>大語言模型作為輔助工具</h2><p>可以使用大語言模型作為<strong>語意分析</strong>與<strong>資料抽取</strong>的工具，當然可以運用不同的模型，在相同的提問詞（prompt）的前提下，比較不同的結果。此外，若要增加專家效度於模型中，則可考慮使用大語言模型，利用「請你作為專家…」之詞彙作為提問詞。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  A[資料預處理] --&gt; B[LDA 模型分析主題]</span><br><span class="line">  A --&gt; C[STM 模型結合元數據]</span><br><span class="line">  B --&gt; D[LDA 主題分布結果]</span><br><span class="line">  C --&gt; E[STM 主題結構與元數據影響]</span><br><span class="line">  D --&gt; F[主題空間投影]</span><br><span class="line">  E --&gt; F</span><br><span class="line">  F --&gt; G[群聚現象分析]</span><br><span class="line">  G --&gt; H[降維可視化]</span><br><span class="line">  H --&gt; I[結果解釋與驗證]</span><br><span class="line">  G --&gt; J[大語言模型輔助]</span><br><span class="line">  J --&gt; I</span><br><span class="line">  I --&gt; K[模型調整與最適化]</span><br></pre></td></tr></table></figure>
+<h3 id="大語言模型作為輔助工具"><a href="#大語言模型作為輔助工具" class="headerlink" title="大語言模型作為輔助工具"></a>大語言模型作為輔助工具</h3><p>可以使用大語言模型作為<strong>語意分析</strong>與<strong>資料抽取</strong>的工具，當然可以運用不同的模型，在相同的提問詞（prompt）的前提下，比較不同的結果。此外，若要增加專家效度於模型中，則可考慮使用大語言模型，利用「請你作為專家…」之詞彙作為提問詞。</p>
+<pre class="mermaid" style="text-align: center;">
+            graph TD
+            A[資料預處理] --> B[LDA 模型分析主題]
+  A --> C[STM 模型結合元數據]
+  B --> D[LDA 主題分布結果]
+  C --> E[STM 主題結構與元數據影響]
+  D --> F[主題空間投影]
+  E --> F
+  F --> G[群聚現象分析]
+  G --> H[降維可視化]
+  H --> I[結果解釋與驗證]
+  G --> J[大語言模型輔助]
+  J --> I
+  I --> K[模型調整與最適化]
+          </pre>
 
     </div>
 
@@ -426,7 +440,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%87%E8%A8%AD%E8%88%87%E7%94%9F%E6%88%90%E9%81%8E%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">模型假設與生成過程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LDA-%E7%9A%84%E6%A6%82%E4%BC%BC%E5%87%BD%E6%95%B8"><span class="nav-number">2.</span> <span class="nav-text">LDA 的概似函數</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#STM-%E6%A8%A1%E5%9E%8B"><span class="nav-number"></span> <span class="nav-text">STM 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%87%E8%A8%AD%E8%88%87%E7%94%9F%E6%88%90%E9%81%8E%E7%A8%8B-1"><span class="nav-number">0.1.</span> <span class="nav-text">模型假設與生成過程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STM-%E7%9A%84%E6%A6%82%E4%BC%BC%E5%87%BD%E6%95%B8"><span class="nav-number">0.2.</span> <span class="nav-text">STM 的概似函數</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="nav-number"></span> <span class="nav-text">研究方向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A1%8C%E6%A8%A1%E5%9E%8B%E5%B0%8B%E6%89%BE%E4%B8%BB%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">使用主題模型尋找主題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%82%BA%E8%BC%94%E5%8A%A9%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">大語言模型作為輔助工具</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%87%E8%A8%AD%E8%88%87%E7%94%9F%E6%88%90%E9%81%8E%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">模型假設與生成過程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LDA-%E7%9A%84%E6%A6%82%E4%BC%BC%E5%87%BD%E6%95%B8"><span class="nav-number">2.</span> <span class="nav-text">LDA 的概似函數</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STM-%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">STM 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E5%81%87%E8%A8%AD%E8%88%87%E7%94%9F%E6%88%90%E9%81%8E%E7%A8%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">模型假設與生成過程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STM-%E7%9A%84%E6%A6%82%E4%BC%BC%E5%87%BD%E6%95%B8"><span class="nav-number">3.2.</span> <span class="nav-text">STM 的概似函數</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="nav-number">4.</span> <span class="nav-text">研究方向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%BB%E9%A1%8C%E6%A8%A1%E5%9E%8B%E5%B0%8B%E6%89%BE%E4%B8%BB%E9%A1%8C"><span class="nav-number">4.1.</span> <span class="nav-text">使用主題模型尋找主題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%AA%9E%E8%A8%80%E6%A8%A1%E5%9E%8B%E4%BD%9C%E7%82%BA%E8%BC%94%E5%8A%A9%E5%B7%A5%E5%85%B7"><span class="nav-number">4.2.</span> <span class="nav-text">大語言模型作為輔助工具</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
