@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>LDA(Latent Dirichlet Allocation)模型與應用</title>
+    <url>/2025/01/07/20250107-urban-ch1/20250107-urban-ch1/</url>
+    <content><![CDATA[<p>LDA(Latent Dirichlet Allocation) 是一種常用的主題模型分析方法。其核心思想是：<strong>一篇文章可以包含多個主題，每個主題都有相關的詞彙</strong>。LDA 模型能根據文章的詞語分配，自動學習出文章包含的主題以及每個主題所對應的詞語，從而快速瞭解文章的主題結構，而不需要仰賴繁瑣且耗時的人工標註。</p>
+<span id="more"></span>
+
+<h2 id="模型假設與生成過程"><a href="#模型假設與生成過程" class="headerlink" title="模型假設與生成過程"></a>模型假設與生成過程</h2><p>LDA 模型假設文件是由主題生成的，每個主題又由詞生成。模型假設以及具體生成過程如下：</p>
+<ol>
+<li><strong>文件集合</strong>：LDA 假設每個文件都是由多個主題的組合形成的，每個主題又由不同的詞組成。文件中每個詞都是從一個特定主題中生成的。</li>
+<li><strong>主題分配</strong>：每個文件都有一個主題分配，通常表示為一個機率分配，即每個主題在該文件中的比例。這些分配由 Dirichlet 分配生成，因此主題分配在不同的文件之間可以有所不同。</li>
+<li><strong>詞的分配</strong>：每個主題也有一個詞的分配，這是該主題中各個詞出現的機率。這些分配同樣由 Dirichlet 分配生成，使得不同主題的詞分配具有獨特性。</li>
+<li><strong>生成過程</strong>：LDA 的生成過程可以描述如下：<ul>
+<li>對於每個文件，隨機從 Dirichlet 分配中選擇一個主題分配。</li>
+<li>對於文件中的每個詞，首先選擇一個主題（根據文件的主題分配），然後從該主題的詞分配中選擇一個詞。</li>
+</ul>
+</li>
+<li><strong>模型參數</strong>：<ul>
+<li>$\alpha$：控制文件主題分配的平滑程度。如果 $\alpha$ 值小，文件中只包含少數幾個主題的可能性較大。</li>
+<li>$\beta$：控制主題的詞分配的平滑程度。如果 $\beta$ 值小，主題中會偏向少數幾個詞。</li>
+</ul>
+</li>
+<li><strong>推論過程</strong>：在應用 LDA 時，通常使用貝葉斯估計或近似估計方法（如 Gibbs 採樣）來估計每個文件的主題分配以及每個主題的詞分配，從而由文本集合中提取出不同的主題。</li>
+</ol>
+<p>LDA 的模型可以用一個<strong>機率生成模型</strong>的形式來理解。LDA 模型假設文件是由主題生成的，每個主題又由詞生成。具體生成過程如下：給定文件集 $D$ 共有 $M$ 篇文件，每篇文件的詞數為 $N_{d}$，並事先決定主題數 $K$。對於每篇文件 $d \in {1, \dots, M}$：</p>
+<ul>
+<li>為每篇文件從 Dirichlet 分配生成主題分配 $\theta_d \sim \text{Dirichlet}(\alpha)$，其中 $\theta_d$ 表示文件 $d$ 中主題的機率分配。</li>
+<li>對每個主題 $k \in {1, \dots, K}$，從 Dirichlet 分配生成詞分配 $\phi_k \sim \text{Dirichlet}(\beta)$，其中 $\phi_k$ 表示主題 $k$ 中詞的機率分配。</li>
+<li>對於每篇文件中的每個詞位置 $n \in {1, \dots, N_d}$：<ul>
+<li>從主題分配 $\theta_d$  中選擇一個主題 $z_{d,n} \sim \text{Multinomial}(\theta_d)$。</li>
+<li>從選擇的主題 $z_{d,n}$ 對應的詞分配 $\phi_{z_{d,n}}$ 中選擇一個詞 $w_{d,n} \sim \text{Multinomial}(\phi_{z_{d,n}})$。</li>
+</ul>
+</li>
+</ul>
+<h2 id="LDA-的概似函數"><a href="#LDA-的概似函數" class="headerlink" title="LDA 的概似函數"></a>LDA 的概似函數</h2><p>綜上，LDA 模型的概似函數表示文件集的生成機率，即文件集的聯合分配</p>
+<p>$$<br>P(D | \alpha, \beta) &#x3D; \prod_{d&#x3D;1}^{M} \int_{\theta_d} P(\theta_d | \alpha) \left( \prod_{n&#x3D;1}^{N_d} \sum_{z_{d,n}} P(z_{d,n} | \theta_d) P(w_{d,n} | z_{d,n}, \beta) \right) d\theta_d<br>$$</p>
+<p>其中</p>
+<ul>
+<li>$P(\theta_d | \alpha)$：文件 $d$ 中的主題分配由參數 $\alpha$ 控制。</li>
+<li>$P(z_{d,n} | \theta_d)$：對每個詞位置 $n$，根據主題分配 $\theta_d$ 選擇一個主題 $z_{d,n}$。</li>
+<li>$P(w_{d,n} | z_{d,n}, \beta)$：從主題 $z_{d,n}$ 的詞分配中選擇詞 $w_{d,n}$，由參數 $\beta$ 控制。</li>
+</ul>
+<p>實務上通常使用近似推斷方法，如<strong>變分推理</strong>或 <strong>Gibbs 採樣 (Gibbs sampling)</strong>，來估計模型的參數（主題分配 $\theta$ 和詞分配 $\phi$，從而計算出文件和詞的隱含主題。</p>
+<h2 id="STM-模型"><a href="#STM-模型" class="headerlink" title="STM 模型"></a>STM 模型</h2><p>不同於 LDA 模型，STM (Strucutral Topic Model) 是一種進階的主題模型分析方法。它在 LDA 的基礎上，<strong>加入了一些文章的元數據 (metadata)，如作者、時間、位置等</strong>，從而更好地學習主題，挖掘主題與元數據之間的關係。<strong>例如，STM 可以學習出不同作者傾向於討論的主題，或者某個時間段內的熱門話題</strong>。與 LDA 相比，STM 更加靈活和強大，適用於更複雜的文本分析場景。</p>
+<p>STM（Structural Topic Model）是一種主題模型，結構上類似於 LDA，但它進一步考慮了文件中的元數據（如時間、作者、來源等）對主題分配的影響。STM 的數學模型擴展了 LDA，將文件的元數據作為額外的解釋變量，用來影響文件的主題分配或主題的詞分配。</p>
+<h3 id="模型假設與生成過程-1"><a href="#模型假設與生成過程-1" class="headerlink" title="模型假設與生成過程"></a>模型假設與生成過程</h3><p>STM 的生成過程可以分為以下幾步：同樣給定文件集 $D$ 共有 $M$ 篇文件，每篇文件的詞數為 $N_{d}$，並事先設定主題數 $K$。不過需要注意到，在 STM 模型中，模型參數的意涵稍微有變化：</p>
+<ul>
+<li>$\alpha$：是文件-主題分配的超參數，並且在 STM 中，$\alpha$ 可以根據文件元數據進行調整。</li>
+<li>$\beta$：是主題-詞分配的超參數，用於控制詞在每個主題中的分配。在 STM 中， $\beta$ 也可以根據文件元數據進行調整。</li>
+</ul>
+<p>此外，由於 STM 模型考慮了元數據與主題分配的關係，因此STM 通過<strong>回歸模型</strong>將元數據與主題分配或詞分配相關聯：在 STM 中，文件的主題分佈 $\theta_d$ 不僅僅來自 Dirichlet 分配，而是通過元數據的影響來生成。簡單來說，$\theta_d$ 是一個向量，取決於元數據 $X_{d}$（例如時間、地區、來源等），可以表示為：</p>
+<p>$$<br>\theta_{d} \sim \operatorname{LogisticNormal}(g(X_{d}, \alpha))<br>$$</p>
+<p>其中 $g(X_{d}, \alpha)$ 是元數據對主題分佈的回歸函數，通常使用 Logistic 標準化來確保主題分佈的和為 $1$。而詞的分佈 $\phi_{k}$ 則可以根據元數據進行調整，即詞在每個主題中的分佈也會受到元數據的影響。這樣可以使得主題中使用的詞語在不同條件下有所變化。因此，綜合以上假設，對於每篇文件 $d \in {1, \dots, M}$ 而言：</p>
+<ul>
+<li>根據元數據 $X_d$ 使用回歸模型生成文件的主題分配 $\theta_d \sim \text{LogisticNormal}(g(X_d, \alpha))$。</li>
+<li>對於每個主題 $k \in {1, \dots, K}$，生成一個詞分配 $\phi_k \sim \text{Dirichlet}(\beta(X_d))$，其中 $\beta(X_d)$ 由元數據調整，以便讓詞的分配隨文件屬性有所變化。</li>
+<li>對於文件中的每個詞位置 $n \in {1, \dots, N_d}$：<ul>
+<li>根據主題分配 $\theta_d$ 選擇一個主題 $z_{d,n} \sim \text{Multinomial}(\theta_d)$。</li>
+<li>從選定的主題 $z_{d,n}$ 對應的詞分配 $\phi_{z_{d,n}}$ 中選擇一個詞 $w_{d,n} \sim \text{Multinomial}(\phi_{z_{d,n}})$。</li>
+</ul>
+</li>
+</ul>
+<h3 id="STM-的概似函數"><a href="#STM-的概似函數" class="headerlink" title="STM 的概似函數"></a>STM 的概似函數</h3><p>STM 的似然函數與 LDA 類似，但由於其主題分配和詞分配受到元數據的調整影響，反倒增加了文件生成過程的靈活程度。STM 的似然函數表示為：</p>
+<p>$$<br>P(D | \color{red}{X}, \alpha, \beta) &#x3D; \prod_{d&#x3D;1}^{M} \int_{\theta_d} P(\theta_d | \color{red}{X_d}, \alpha) \left( \prod_{n&#x3D;1}^{N_d} \sum_{z_{d,n}} P(z_{d,n} | \theta_d) P(w_{d,n} | z_{d,n}, \color{red}{X_d}, \beta) \right) d\theta_d<br>$$</p>
+<p>其中</p>
+<ul>
+<li>$P(\theta_d | X_d, \alpha)$：考慮文件元數據 $X_d$ 的主題分配。</li>
+<li>$P(z_{d,n} | \theta_d)$：對於文件中的每個詞位置 $n$，根據主題分配選擇一個主題。</li>
+<li>$P(w_{d,n} | z_{d,n}, X_d, \beta)$：根據主題的詞分配（考慮了元數據影響）選擇詞 $w_{d,n}$。</li>
+</ul>
+<p>在 STM 中，推論同樣需要用到<strong>變分推理</strong>或 <strong>Gibbs 採樣</strong>，但還需進一步估計元數據對主題分配和詞分配的影響參數。</p>
+<table>
+<thead>
+<tr>
+<th>特徵</th>
+<th>LDA 模型</th>
+<th>STM 模型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型基本思想</td>
+<td>根據文章的詞語分配，自動學習出文章包含的主題</td>
+<td>在 LDA 的基礎上，加入文章的元數據，如作者、時間、位置等</td>
+</tr>
+<tr>
+<td>主要優勢</td>
+<td>簡單易懂，在多個領域有廣泛應用</td>
+<td>更加靈活和強大，能挖掘主題與元數據之間的關係</td>
+</tr>
+<tr>
+<td>適用場景</td>
+<td>基本的文本主題分析</td>
+<td>複雜的文本分析，如作者分析、時間趨勢分析等</td>
+</tr>
+</tbody></table>
+<h2 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h2><p>首先，目前的問題是資料量太少，且用語言模型分析社會期望的跨國比較有點「大材小用」，因此應該換一條路走。</p>
+<h3 id="使用主題模型尋找主題"><a href="#使用主題模型尋找主題" class="headerlink" title="使用主題模型尋找主題"></a>使用主題模型尋找主題</h3><p>根據目前既有資料，可以使用主題模型，將文本的潛在主題萃取出。</p>
+<ul>
+<li>一篇文本包含至少一個主題，可以使用統計方法將資料進行篩選</li>
+<li>文本主題篩選可以考慮出現比率（ratio），若高於特定數值（例如 $0.1$）則納入</li>
+<li>如果遇到停用詞或需要移除的詞彙，可以使用既有數據進行篩除，但較建議使用遮罩（mask）的方式，例如當模型看到<code>[word]</code>，會跳過該詞彙，但不會將其刪除，從而保留字詞之間的上下文意</li>
+</ul>
+<p>王釧茹老師建議使用程式讓它<strong>考試</strong>，以<code>文本特徵_合併.xlsx</code>這份檔案中人工標記的<code>v4</code>與<code>v4a</code>作為標準答案，每次考試都有不同的答案，從而可以判斷選擇主題個數為何。</p>
+<h3 id="大語言模型作為輔助工具"><a href="#大語言模型作為輔助工具" class="headerlink" title="大語言模型作為輔助工具"></a>大語言模型作為輔助工具</h3><p>可以使用大語言模型作為<strong>語意分析</strong>與<strong>資料抽取</strong>的工具，當然可以運用不同的模型，在相同的提問詞（prompt）的前提下，比較不同的結果。此外，若要增加專家效度於模型中，則可考慮使用大語言模型，利用「請你作為專家…」之詞彙作為提問詞。</p>
+<pre class="mermaid" style="text-align: center;">
+            graph TD
+            A[資料預處理] --> B[LDA 模型分析主題]
+  A --> C[STM 模型結合元數據]
+  B --> D[LDA 主題分布結果]
+  C --> E[STM 主題結構與元數據影響]
+  D --> F[主題空間投影]
+  E --> F
+  F --> G[群聚現象分析]
+  G --> H[降維可視化]
+  H --> I[結果解釋與驗證]
+  G --> J[大語言模型輔助]
+  J --> I
+  I --> K[模型調整與最適化]
+          </pre>
+]]></content>
+      <categories>
+        <category>研究札記</category>
+      </categories>
+      <tags>
+        <tag>自然語言處理</tag>
+        <tag>機器學習</tag>
+        <tag>深度學習</tag>
+      </tags>
+  </entry>
+</search>
