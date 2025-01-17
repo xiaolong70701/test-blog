@@ -1,152 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LDA(Latent Dirichlet Allocation)模型與應用</title>
-    <url>//LDA%E6%A8%A1%E5%9E%8B%E8%88%87%E6%87%89%E7%94%A8/</url>
-    <content><![CDATA[<p>LDA(Latent Dirichlet Allocation) 是一種常用的主題模型分析方法。其核心思想是：<strong>一篇文章可以包含多個主題，每個主題都有相關的詞彙</strong>。LDA 模型能根據文章的詞語分配，自動學習出文章包含的主題以及每個主題所對應的詞語，從而快速瞭解文章的主題結構，而不需要仰賴繁瑣且耗時的人工標註。</p>
+    <title>都市經濟學 (1) ——都市空間結構</title>
+    <url>//urbanecon-1/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><div class="note default">
+            <p>都市經濟學這一系列的學習筆記，是基於 Jan Brueckner 的 <em>Lectures on Urban Economics</em> 一書吸收、撰寫而成，讀者若有興趣，可以自行上網搜尋書籍閱讀。</p>
+          </div>
+
+<p>縱貫人類文明發展，從起初的遊牧生活、上古世紀的城邦、中古世紀的莊園，直至二十一世紀居於城市，人類的居住習慣隨著科技的進步與發展有所改變。都市一詞源於拉丁文 <em>urbanus</em>，意指「有關城市生活，或與城市或城鎮相關的事物」<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="詳見 [Etmology 字典](https://www.etymonline.com/search?q=urban)的說明。">[1]</span></a></sup>，而如今都市一詞則泛指人口集中、工商業發達、科技進步的區域。</p>
 <span id="more"></span>
 
-<h2 id="模型假設與生成過程"><a href="#模型假設與生成過程" class="headerlink" title="模型假設與生成過程"></a>模型假設與生成過程</h2><p>LDA 模型假設文件是由主題生成的，每個主題又由詞生成。模型假設以及具體生成過程如下：</p>
-<ol>
-<li><strong>文件集合</strong>：LDA 假設每個文件都是由多個主題的組合形成的，每個主題又由不同的詞組成。文件中每個詞都是從一個特定主題中生成的。</li>
-<li><strong>主題分配</strong>：每個文件都有一個主題分配，通常表示為一個機率分配，即每個主題在該文件中的比例。這些分配由 Dirichlet 分配生成，因此主題分配在不同的文件之間可以有所不同。</li>
-<li><strong>詞的分配</strong>：每個主題也有一個詞的分配，這是該主題中各個詞出現的機率。這些分配同樣由 Dirichlet 分配生成，使得不同主題的詞分配具有獨特性。</li>
-<li><strong>生成過程</strong>：LDA 的生成過程可以描述如下：<ul>
-<li>對於每個文件，隨機從 Dirichlet 分配中選擇一個主題分配。</li>
-<li>對於文件中的每個詞，首先選擇一個主題（根據文件的主題分配），然後從該主題的詞分配中選擇一個詞。</li>
-</ul>
-</li>
-<li><strong>模型參數</strong>：<ul>
-<li>$\alpha$：控制文件主題分配的平滑程度。如果 $\alpha$ 值小，文件中只包含少數幾個主題的可能性較大。</li>
-<li>$\beta$：控制主題的詞分配的平滑程度。如果 $\beta$ 值小，主題中會偏向少數幾個詞。</li>
-</ul>
-</li>
-<li><strong>推論過程</strong>：在應用 LDA 時，通常使用貝葉斯估計或近似估計方法（如 Gibbs 採樣）來估計每個文件的主題分配以及每個主題的詞分配，從而由文本集合中提取出不同的主題。</li>
-</ol>
-<p>LDA 的模型可以用一個<strong>機率生成模型</strong>的形式來理解。LDA 模型假設文件是由主題生成的，每個主題又由詞生成。具體生成過程如下：給定文件集 $D$ 共有 $M$ 篇文件，每篇文件的詞數為 $N_{d}$，並事先決定主題數 $K$。對於每篇文件 $d \in {1, \dots, M}$：</p>
-<ul>
-<li>為每篇文件從 Dirichlet 分配生成主題分配 $\theta_d \sim \text{Dirichlet}(\alpha)$，其中 $\theta_d$ 表示文件 $d$ 中主題的機率分配。</li>
-<li>對每個主題 $k \in {1, \dots, K}$，從 Dirichlet 分配生成詞分配 $\phi_k \sim \text{Dirichlet}(\beta)$，其中 $\phi_k$ 表示主題 $k$ 中詞的機率分配。</li>
-<li>對於每篇文件中的每個詞位置 $n \in {1, \dots, N_d}$：<ul>
-<li>從主題分配 $\theta_d$  中選擇一個主題 $z_{d,n} \sim \text{Multinomial}(\theta_d)$。</li>
-<li>從選擇的主題 $z_{d,n}$ 對應的詞分配 $\phi_{z_{d,n}}$ 中選擇一個詞 $w_{d,n} \sim \text{Multinomial}(\phi_{z_{d,n}})$。</li>
-</ul>
-</li>
-</ul>
-<h2 id="LDA-的概似函數"><a href="#LDA-的概似函數" class="headerlink" title="LDA 的概似函數"></a>LDA 的概似函數</h2><p>綜上，LDA 模型的概似函數表示文件集的生成機率，即文件集的聯合分配</p>
-<p>$$<br>P(D | \alpha, \beta) &#x3D; \prod_{d&#x3D;1}^{M} \int_{\theta_d} P(\theta_d | \alpha) \left( \prod_{n&#x3D;1}^{N_d} \sum_{z_{d,n}} P(z_{d,n} | \theta_d) P(w_{d,n} | z_{d,n}, \beta) \right) d\theta_d<br>$$</p>
-<p>其中</p>
-<ul>
-<li>$P(\theta_d | \alpha)$：文件 $d$ 中的主題分配由參數 $\alpha$ 控制。</li>
-<li>$P(z_{d,n} | \theta_d)$：對每個詞位置 $n$，根據主題分配 $\theta_d$ 選擇一個主題 $z_{d,n}$。</li>
-<li>$P(w_{d,n} | z_{d,n}, \beta)$：從主題 $z_{d,n}$ 的詞分配中選擇詞 $w_{d,n}$，由參數 $\beta$ 控制。</li>
-</ul>
-<p>實務上通常使用近似推斷方法，如<strong>變分推理</strong>或 <strong>Gibbs 採樣 (Gibbs sampling)</strong>，來估計模型的參數（主題分配 $\theta$ 和詞分配 $\phi$，從而計算出文件和詞的隱含主題。</p>
-<h2 id="STM-模型"><a href="#STM-模型" class="headerlink" title="STM 模型"></a>STM 模型</h2><p>不同於 LDA 模型，STM (Strucutral Topic Model) 是一種進階的主題模型分析方法。它在 LDA 的基礎上，<strong>加入了一些文章的元數據 (metadata)，如作者、時間、位置等</strong>，從而更好地學習主題，挖掘主題與元數據之間的關係。<strong>例如，STM 可以學習出不同作者傾向於討論的主題，或者某個時間段內的熱門話題</strong>。與 LDA 相比，STM 更加靈活和強大，適用於更複雜的文本分析場景。</p>
-<p>STM（Structural Topic Model）是一種主題模型，結構上類似於 LDA，但它進一步考慮了文件中的元數據（如時間、作者、來源等）對主題分配的影響。STM 的數學模型擴展了 LDA，將文件的元數據作為額外的解釋變量，用來影響文件的主題分配或主題的詞分配。</p>
-<h3 id="模型假設與生成過程-1"><a href="#模型假設與生成過程-1" class="headerlink" title="模型假設與生成過程"></a>模型假設與生成過程</h3><p>STM 的生成過程可以分為以下幾步：同樣給定文件集 $D$ 共有 $M$ 篇文件，每篇文件的詞數為 $N_{d}$，並事先設定主題數 $K$。不過需要注意到，在 STM 模型中，模型參數的意涵稍微有變化：</p>
-<ul>
-<li>$\alpha$：是文件-主題分配的超參數，並且在 STM 中，$\alpha$ 可以根據文件元數據進行調整。</li>
-<li>$\beta$：是主題-詞分配的超參數，用於控制詞在每個主題中的分配。在 STM 中， $\beta$ 也可以根據文件元數據進行調整。</li>
-</ul>
-<p>此外，由於 STM 模型考慮了元數據與主題分配的關係，因此STM 通過<strong>回歸模型</strong>將元數據與主題分配或詞分配相關聯：在 STM 中，文件的主題分佈 $\theta_d$ 不僅僅來自 Dirichlet 分配，而是通過元數據的影響來生成。簡單來說，$\theta_d$ 是一個向量，取決於元數據 $X_{d}$（例如時間、地區、來源等），可以表示為：</p>
-<p>$$<br>\theta_{d} \sim \operatorname{LogisticNormal}(g(X_{d}, \alpha))<br>$$</p>
-<p>其中 $g(X_{d}, \alpha)$ 是元數據對主題分佈的回歸函數，通常使用 Logistic 標準化來確保主題分佈的和為 $1$。而詞的分佈 $\phi_{k}$ 則可以根據元數據進行調整，即詞在每個主題中的分佈也會受到元數據的影響。這樣可以使得主題中使用的詞語在不同條件下有所變化。因此，綜合以上假設，對於每篇文件 $d \in {1, \dots, M}$ 而言：</p>
-<ul>
-<li>根據元數據 $X_d$ 使用回歸模型生成文件的主題分配 $\theta_d \sim \text{LogisticNormal}(g(X_d, \alpha))$。</li>
-<li>對於每個主題 $k \in {1, \dots, K}$，生成一個詞分配 $\phi_k \sim \text{Dirichlet}(\beta(X_d))$，其中 $\beta(X_d)$ 由元數據調整，以便讓詞的分配隨文件屬性有所變化。</li>
-<li>對於文件中的每個詞位置 $n \in {1, \dots, N_d}$：<ul>
-<li>根據主題分配 $\theta_d$ 選擇一個主題 $z_{d,n} \sim \text{Multinomial}(\theta_d)$。</li>
-<li>從選定的主題 $z_{d,n}$ 對應的詞分配 $\phi_{z_{d,n}}$ 中選擇一個詞 $w_{d,n} \sim \text{Multinomial}(\phi_{z_{d,n}})$。</li>
-</ul>
-</li>
-</ul>
-<h3 id="STM-的概似函數"><a href="#STM-的概似函數" class="headerlink" title="STM 的概似函數"></a>STM 的概似函數</h3><p>STM 的似然函數與 LDA 類似，但由於其主題分配和詞分配受到元數據的調整影響，反倒增加了文件生成過程的靈活程度。STM 的似然函數表示為：</p>
-<p>$$<br>P(D | \color{red}{X}, \alpha, \beta) &#x3D; \prod_{d&#x3D;1}^{M} \int_{\theta_d} P(\theta_d | \color{red}{X_d}, \alpha) \left( \prod_{n&#x3D;1}^{N_d} \sum_{z_{d,n}} P(z_{d,n} | \theta_d) P(w_{d,n} | z_{d,n}, \color{red}{X_d}, \beta) \right) d\theta_d<br>$$</p>
-<p>其中</p>
-<ul>
-<li>$P(\theta_d | X_d, \alpha)$：考慮文件元數據 $X_d$ 的主題分配。</li>
-<li>$P(z_{d,n} | \theta_d)$：對於文件中的每個詞位置 $n$，根據主題分配選擇一個主題。</li>
-<li>$P(w_{d,n} | z_{d,n}, X_d, \beta)$：根據主題的詞分配（考慮了元數據影響）選擇詞 $w_{d,n}$。</li>
-</ul>
-<p>在 STM 中，推論同樣需要用到<strong>變分推理</strong>或 <strong>Gibbs 採樣</strong>，但還需進一步估計元數據對主題分配和詞分配的影響參數。</p>
-<table>
-<thead>
-<tr>
-<th>特徵</th>
-<th>LDA 模型</th>
-<th>STM 模型</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>模型基本思想</td>
-<td>根據文章的詞語分配，自動學習出文章包含的主題</td>
-<td>在 LDA 的基礎上，加入文章的元數據，如作者、時間、位置等</td>
-</tr>
-<tr>
-<td>主要優勢</td>
-<td>簡單易懂，在多個領域有廣泛應用</td>
-<td>更加靈活和強大，能挖掘主題與元數據之間的關係</td>
-</tr>
-<tr>
-<td>適用場景</td>
-<td>基本的文本主題分析</td>
-<td>複雜的文本分析，如作者分析、時間趨勢分析等</td>
-</tr>
-</tbody></table>
-<h2 id="研究方向"><a href="#研究方向" class="headerlink" title="研究方向"></a>研究方向</h2><p>首先，目前的問題是資料量太少，且用語言模型分析社會期望的跨國比較有點「大材小用」，因此應該換一條路走。</p>
-<h3 id="使用主題模型尋找主題"><a href="#使用主題模型尋找主題" class="headerlink" title="使用主題模型尋找主題"></a>使用主題模型尋找主題</h3><p>根據目前既有資料，可以使用主題模型，將文本的潛在主題萃取出。</p>
-<ul>
-<li>一篇文本包含至少一個主題，可以使用統計方法將資料進行篩選</li>
-<li>文本主題篩選可以考慮出現比率（ratio），若高於特定數值（例如 $0.1$）則納入</li>
-<li>如果遇到停用詞或需要移除的詞彙，可以使用既有數據進行篩除，但較建議使用遮罩（mask）的方式，例如當模型看到<code>[word]</code>，會跳過該詞彙，但不會將其刪除，從而保留字詞之間的上下文意</li>
-</ul>
-<p>王釧茹老師建議使用程式讓它<strong>考試</strong>，以<code>文本特徵_合併.xlsx</code>這份檔案中人工標記的<code>v4</code>與<code>v4a</code>作為標準答案，每次考試都有不同的答案，從而可以判斷選擇主題個數為何。</p>
-<h3 id="大語言模型作為輔助工具"><a href="#大語言模型作為輔助工具" class="headerlink" title="大語言模型作為輔助工具"></a>大語言模型作為輔助工具</h3><p>可以使用大語言模型作為<strong>語意分析</strong>與<strong>資料抽取</strong>的工具，當然可以運用不同的模型，在相同的提問詞（prompt）的前提下，比較不同的結果。此外，若要增加專家效度於模型中，則可考慮使用大語言模型，利用「請你作為專家…」之詞彙作為提問詞。</p>
-<pre class="mermaid" style="text-align: center;">
-            graph TD
-            A[資料預處理] --> B[LDA 模型分析主題]
-  A --> C[STM 模型結合元數據]
-  B --> D[LDA 主題分布結果]
-  C --> E[STM 主題結構與元數據影響]
-  D --> F[主題空間投影]
-  E --> F
-  F --> G[群聚現象分析]
-  G --> H[降維可視化]
-  H --> I[結果解釋與驗證]
-  G --> J[大語言模型輔助]
-  J --> I
-  I --> K[模型調整與最適化]
-          </pre>
-]]></content>
+<p>想像一下，你是一個初出社會的新鮮人，現在要考慮的事情是為自己找一份工作餬口飯吃。但在找工作之前，你必須先有一個安身之處，這時候你想到到 Facebook 上的租屋社團先尋找屬意工作附近的租屋處，再打算投遞履歷。正當你興高采烈的想要找尋你心中的租屋處時，發現到每一間的房租都高得嚇人，心想就算真的找到工作，自己的薪水可能也無法負擔高額租金。於是你就開始往較為便宜的地方開始找尋，不過這些地方都比較遠，通勤也需要一段時間，但至少不用每個月入不敷出…</p>
+<p>上面這個例子不是個案，而是大多數人都可能面臨的窘境。選擇居於何處、何種工作，成為了個體選擇的難題。作為研究個體選擇的學科，經濟學則延伸出了次領域：都市經濟學(urban economics)與空間經濟學(spatial economics)，探討個體的居住與就業選擇等涉及到都市與空間的概念。</p>
+<h2 id="都市的結構"><a href="#都市的結構" class="headerlink" title="都市的結構"></a>都市的結構</h2><p>「戰南北」對於時常使用社交軟體的台灣人而言，再熟悉不過的名詞了。</p>
+<h2 id="消費者的選擇"><a href="#消費者的選擇" class="headerlink" title="消費者的選擇"></a>消費者的選擇</h2><h2 id="建商的「計謀」"><a href="#建商的「計謀」" class="headerlink" title="建商的「計謀」"></a>建商的「計謀」</h2><h2 id="人口密度"><a href="#人口密度" class="headerlink" title="人口密度"></a>人口密度</h2><h2 id="簡單的均衡分析"><a href="#簡單的均衡分析" class="headerlink" title="簡單的均衡分析"></a>簡單的均衡分析</h2><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">詳見 <a href="https://www.etymonline.com/search?q=urban">Etmology 字典</a>的說明。<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>]]></content>
       <categories>
-        <category>研究札記</category>
+        <category>學習筆記</category>
       </categories>
       <tags>
-        <tag>自然語言處理</tag>
-        <tag>機器學習</tag>
-        <tag>深度學習</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【為何沒有E選項？——談台灣教育的缺失，兼論補習文化】</title>
-    <url>//%E7%82%BA%E4%BD%95%E6%B2%92%E6%9C%89E%E9%81%B8%E9%A0%85%EF%BC%9F%E2%80%94%E2%80%94%E8%AB%87%E5%8F%B0%E7%81%A3%E6%95%99%E8%82%B2%E7%9A%84%E7%BC%BA%E5%A4%B1%EF%BC%8C%E5%85%BC%E8%AB%96%E8%A3%9C%E7%BF%92%E6%96%87%E5%8C%96/</url>
-    <content><![CDATA[<h2 id="為什麼這個選項不行？"><a href="#為什麼這個選項不行？" class="headerlink" title="為什麼這個選項不行？"></a>為什麼這個選項不行？</h2><p>相信有不少人看過底下這張圖，明明都可以得到同樣的答案，卻是假「建構式數學」之名，行「填鴨式教育」(cramming education)之實。當然，我必須承認，教導孩子學習某些方法，確實是可以一步步地引導孩子學習，但不可否認的是，有些孩子真的比較聰明，會的也比同齡的孩子多，正如底下附圖所示，直式並非算數之唯一解方，只要能夠求出一樣的答案，對於其他方法有何不可承認的呢？</p>
-<span id="more"></span>
-
-<p><img src="https://i.imgur.com/rlqVj12.png"></p>
-<p>這邊就直截了當的講，台灣教育的弊病之一，就是給予過於制式化的標準答案。以我的觀點而言，作文一直是我在各個學科上的強項（我不敢說我作文真的很強，只是比較下來的），但近幾年（似乎是從我那屆學測，也就是107學年度開始）教育部對於學測國文寫作（下稱國寫）的政策方針是：要求學生同時兼具「理性」與「感性」，並鼓勵學生將生活經驗融入其中，且希望學生能夠有許多創意的想法。然而，諷刺的是，今年學測國寫題目「如果我有一座新冰箱」引發許多網友熱議，大考中心於2021年2月1日舉辦說明會，會中表示：「能深刻描繪新冰箱冷藏內容，由此連結美好生活，虛實整合、富有巧思者可得A+級，但有考生寫成『如果我是一座新冰箱』，或像流水帳式陳述冰箱可能儲存哪些物品，未扣回到主題且與原命題方向不同，分數就會有落差。」</p>
-<p>簡言之，還是有標準答案的嘛⋯⋯</p>
-<p>台灣教育最令人感到頭疼的，就是不斷地抄襲外國的教育政策，但卻又缺乏一個定性的方針，導致當前的教育體制變得四不像。我認為，如果教育部真的有心想要改革，希望學生擁有思辨的能力(critical thinking)，就應該如法國一般，真切給予學生思考與批判的空間，只要學生的答案具有邏輯性，雖某種程度上不與命題者之真意相符，但仍應使其具有一定的分數。</p>
-<h2 id="補習班老師教的解法就很快啊，幹嘛聽學校老師講的。"><a href="#補習班老師教的解法就很快啊，幹嘛聽學校老師講的。" class="headerlink" title="補習班老師教的解法就很快啊，幹嘛聽學校老師講的。"></a>補習班老師教的解法就很快啊，幹嘛聽學校老師講的。</h2><p>補習作為台灣最具特色的文化，根據教育部2017年的統計數據，全台補習班的數量已經達到近18500間，意味著在台灣22個行政區域中，每個行政區內至少都有高達500家的補習班，而高度發展的都市又存在更多的補習班。補習班林立已經是台灣最「引以為傲」的現象，好像從小沒有去補習，未來必定不會有所成就。</p>
-<p>的確，補習班會給予學生某種程度上的益處——超前進度讓學生可以學得更多、教導學生一些速算法以加快學生解題速度。但事實上這些教學方式，不僅沒有在本質上幫助學生，更是摧殘學生。</p>
-<p>分享一下最近在補習班當輔導老師的經歷：當我在教學生作文時，學生總是會跟我說：「老師說這題應該怎樣怎樣解」或「這幾個單字不是意思完全一樣嗎」（可以參考Instagram上<a href="https://www.instagram.com/p/CKgXlvjnZh4/">小籠包老師對於「bombastic」的觀點</a>）等話語，讓我十分頭疼。如同上述所說的，在這些學生的心中，答案已經不再是答案，而像是「一個蘿蔔一個坑」一般，每個題目都有一定的解法或標準答案，學生自己已經完完全全失去了獨立思考的能力。</p>
-<p>我必須說，我不會一竿子打翻一船人，但這個現象我已經看過太多了。從小我就是一個沒有補習生活的人（除了英文，不過英文也不是補學科，而是真正的學習一門語言），我很不懂為什麼要補習（歡迎在留言區跟我討論）或為什麼要浪費時間去那種悶熱、空氣不流通的環境，在一天上課的辛勞後，還要不斷地被各種資訊、知識壓榨，根本沒有任何的課外活動時間。</p>
-<p>教育部從111學年度，對於大學入學考試，提出「學習歷程檔案」的政策，鼓勵學生能夠多多參與各種活動，增加自己的閱歷。然而，荒謬的是，教育部所推行的課綱、考試內容不斷地增加難度的趨勢（不是不好，只是這個政策所帶來的弊大於利），以及堅持那一套「標準答案」的思維，只會讓學生更有壓力，不得不去蹲補習班，最後形成一個惡性循環——學生面對困難考試只會尋求一定的標準解答，不會自己摸索各種解方與答案。</p>
-<p>最後，我認為台灣教育應該推行的，是給予學生提出自己見解的機會，而非老師說什麼就是什麼。學生應該自己去思考某些問題的答案，或許在這個思考的過程中，會找出該問題或該解方的某些盲點，待有朝一日能夠推翻現有的解決方式或理論基礎，這個社會以及知識體系才能不斷地被建構、循環下去。嗯嗯喔，等等喔</p>
-]]></content>
-      <tags>
-        <tag>Diary</tag>
+        <tag>經濟學</tag>
+        <tag>空間經濟學</tag>
+        <tag>都市經濟學</tag>
       </tags>
   </entry>
 </search>

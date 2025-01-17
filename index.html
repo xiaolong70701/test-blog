@@ -213,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://www.yueswater.com/LDA%E6%A8%A1%E5%9E%8B%E8%88%87%E6%87%89%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://www.yueswater.com/urbanecon-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile.svg">
@@ -227,7 +227,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/LDA%E6%A8%A1%E5%9E%8B%E8%88%87%E6%87%89%E7%94%A8/" class="post-title-link" itemprop="url">LDA(Latent Dirichlet Allocation)模型與應用</a>
+            <a href="/urbanecon-1/" class="post-title-link" itemprop="url">都市經濟學 (1) ——都市空間結構</a>
         </h2>
 
         <div class="post-meta">
@@ -237,14 +237,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2025-01-07 23:48:22" itemprop="dateCreated datePublished" datetime="2025-01-07T23:48:22+08:00">2025-01-07</time>
+              <time title="創建時間：2025-01-09 18:59:39" itemprop="dateCreated datePublished" datetime="2025-01-09T18:59:39+08:00">2025-01-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2025-01-08 15:35:00" itemprop="dateModified" datetime="2025-01-08T15:35:00+08:00">2025-01-08</time>
+                <time title="修改時間：2025-01-11 02:51:42" itemprop="dateModified" datetime="2025-01-11T02:51:42+08:00">2025-01-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,7 +252,7 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%94%E7%A9%B6%E6%9C%AD%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">研究札記</span></a>
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
                 </span>
             </span>
 
@@ -265,25 +265,25 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/LDA%E6%A8%A1%E5%9E%8B%E8%88%87%E6%87%89%E7%94%A8/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/LDA模型與應用/" itemprop="commentCount"></span>
+    <a title="disqus" href="/urbanecon-1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/urbanecon-1/" itemprop="commentCount"></span>
     </a>
   </span>
   
-  
+  <br>
             <span class="post-meta-item" title="文章字數">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">文章字數：</span>
-              <span>4.3k</span>
+              <span>670</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>21 分鐘</span>
+              <span>3 分鐘</span>
             </span>
 
         </div>
@@ -295,110 +295,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>LDA(Latent Dirichlet Allocation) 是一種常用的主題模型分析方法。其核心思想是：<strong>一篇文章可以包含多個主題，每個主題都有相關的詞彙</strong>。LDA 模型能根據文章的詞語分配，自動學習出文章包含的主題以及每個主題所對應的詞語，從而快速瞭解文章的主題結構，而不需要仰賴繁瑣且耗時的人工標註。</p>
+          <div class="note default">
+            <p>都市經濟學這一系列的學習筆記，是基於 Jan Brueckner 的 <em>Lectures on Urban Economics</em> 一書吸收、撰寫而成，讀者若有興趣，可以自行上網搜尋書籍閱讀。</p>
+          </div>
+
+<p>縱貫人類文明發展，從起初的遊牧生活、上古世紀的城邦、中古世紀的莊園，直至二十一世紀居於城市，人類的居住習慣隨著科技的進步與發展有所改變。都市一詞源於拉丁文 <em>urbanus</em>，意指「有關城市生活，或與城市或城鎮相關的事物」<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="詳見 [Etmology 字典](https://www.etymonline.com/search?q=urban)的說明。">[1]</span></a></sup>，而如今都市一詞則泛指人口集中、工商業發達、科技進步的區域。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/LDA%E6%A8%A1%E5%9E%8B%E8%88%87%E6%87%89%E7%94%A8/" rel="contents">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://www.yueswater.com/%E7%82%BA%E4%BD%95%E6%B2%92%E6%9C%89E%E9%81%B8%E9%A0%85%EF%BC%9F%E2%80%94%E2%80%94%E8%AB%87%E5%8F%B0%E7%81%A3%E6%95%99%E8%82%B2%E7%9A%84%E7%BC%BA%E5%A4%B1%EF%BC%8C%E5%85%BC%E8%AB%96%E8%A3%9C%E7%BF%92%E6%96%87%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile.svg">
-      <meta itemprop="name" content="Anthony Sung">
-      <meta itemprop="description" content="對生活抱持好奇心的學習者">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岳氏礦泉水">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%82%BA%E4%BD%95%E6%B2%92%E6%9C%89E%E9%81%B8%E9%A0%85%EF%BC%9F%E2%80%94%E2%80%94%E8%AB%87%E5%8F%B0%E7%81%A3%E6%95%99%E8%82%B2%E7%9A%84%E7%BC%BA%E5%A4%B1%EF%BC%8C%E5%85%BC%E8%AB%96%E8%A3%9C%E7%BF%92%E6%96%87%E5%8C%96/" class="post-title-link" itemprop="url">【為何沒有E選項？——談台灣教育的缺失，兼論補習文化】</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2022-09-11 00:00:00" itemprop="dateCreated datePublished" datetime="2022-09-11T00:00:00+08:00">2022-09-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2025-01-08 22:41:54" itemprop="dateModified" datetime="2025-01-08T22:41:54+08:00">2025-01-08</time>
-              </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/%E7%82%BA%E4%BD%95%E6%B2%92%E6%9C%89E%E9%81%B8%E9%A0%85%EF%BC%9F%E2%80%94%E2%80%94%E8%AB%87%E5%8F%B0%E7%81%A3%E6%95%99%E8%82%B2%E7%9A%84%E7%BC%BA%E5%A4%B1%EF%BC%8C%E5%85%BC%E8%AB%96%E8%A3%9C%E7%BF%92%E6%96%87%E5%8C%96/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="/為何沒有E選項？——談台灣教育的缺失，兼論補習文化/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="文章字數">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">文章字數：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">所需閱讀時間 &asymp;</span>
-              <span>8 分鐘</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="為什麼這個選項不行？"><a href="#為什麼這個選項不行？" class="headerlink" title="為什麼這個選項不行？"></a>為什麼這個選項不行？</h2><p>相信有不少人看過底下這張圖，明明都可以得到同樣的答案，卻是假「建構式數學」之名，行「填鴨式教育」(cramming education)之實。當然，我必須承認，教導孩子學習某些方法，確實是可以一步步地引導孩子學習，但不可否認的是，有些孩子真的比較聰明，會的也比同齡的孩子多，正如底下附圖所示，直式並非算數之唯一解方，只要能夠求出一樣的答案，對於其他方法有何不可承認的呢？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E7%82%BA%E4%BD%95%E6%B2%92%E6%9C%89E%E9%81%B8%E9%A0%85%EF%BC%9F%E2%80%94%E2%80%94%E8%AB%87%E5%8F%B0%E7%81%A3%E6%95%99%E8%82%B2%E7%9A%84%E7%BC%BA%E5%A4%B1%EF%BC%8C%E5%85%BC%E8%AB%96%E8%A3%9C%E7%BF%92%E6%96%87%E5%8C%96/" rel="contents">
+              <a class="btn" href="/urbanecon-1/" rel="contents">
                 閱讀全文 &raquo;
               </a>
             </div>
@@ -486,7 +390,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -499,7 +403,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -545,7 +449,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">&copy; Anthony 部落格原站：<a href="https://xiaolong70701.github.io/blog/" target="_blank">Yueswater Blog</a>
+  <span class="author" itemprop="copyrightHolder">&copy; Anthony 部落格原站：<a href="https://xiaolong70701.github.io/blog/" target="_blank">Yueswater Blog</a>；若要轉載文章，麻煩請保留原作者名稱與原始連結。
 </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 強力驅動
