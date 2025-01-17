@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>LDA 模型</title>
-    <url>/yueswater/2025/01/05/20250106-LDA/20250106-LDA/</url>
+    <url>/yueswater/2025-01-17-LDA/</url>
     <content><![CDATA[<p>LDA(Latent Dirichlet Allocation) 是一種常用的主題模型分析方法。其核心思想是：<strong>一篇文章可以包含多個主題，每個主題都有相關的詞彙</strong>。LDA 模型能根據文章的詞語分配，自動學習出文章包含的主題以及每個主題所對應的詞語，從而快速瞭解文章的主題結構，而不需要仰賴繁瑣且耗時的人工標註。</p>
 <span id="more"></span>
 
